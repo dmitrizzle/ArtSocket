@@ -1,0 +1,145 @@
+# use PHP5 Single php.ini as default
+AddHandler application/x-httpd-php54 .php
+
+# don't require file extensions:
+Options +MultiViews -Indexes
+AddType application/x-httpd-php .php
+
+AddType text/cache-manifest manifest
+<Files *.manifest>
+    ExpiresActive On
+    ExpiresDefault "access"
+</Files>
+
+# rewrite engine
+RewriteEngine on
+RewriteBase /
+
+
+
+
+
+
+
+
+
+
+
+
+# add www at the beginning
+RewriteCond %{HTTP_HOST} ^artsocket.com
+RewriteCond %{REQUEST_URI} !\.(jpe?g|png|svg|js|css)$
+RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
+
+
+# http -> https
+RewriteCond %{HTTP_HOST} www.artsocket.com
+RewriteCond %{REQUEST_URI} !\.(jpe?g|png|svg|js|css)$
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+
+# https -> http (for other than artsocket.com)
+#RewriteCond %{HTTP_HOST} !www.artsocket.com
+#RewriteCond %{HTTPS} on
+#RewriteRule ^(.*)$ http://%{HTTP_HOST}/$1 [R=301,L]
+
+
+
+# forcibly removing .php stuff and adding trailing slash on www.artsocket.com
+#RewriteCond %{HTTP_HOST} ^artsocket.com
+RewriteCond %{THE_REQUEST} ^GET\s.+\.php [NC]
+RewriteRule ^(.+)\.php/?$ /$1/ [NE,R=301,L,NC]
+
+
+
+
+
+# static content etags
+FileETag MTime Size
+<ifmodule mod_expires.c>
+  <filesmatch "\.(jpg|gif|png|css|js)$">
+       ExpiresActive on
+       ExpiresDefault "access plus 1 year"
+   </filesmatch>
+</ifmodule>
+
+
+# set charset for html files
+AddDefaultCharset UTF-8
+LanguagePriority en-US
+ForceLanguagePriority Fallback
+
+# error messages
+ErrorDocument 400 /snippets/errors/400.shtml
+ErrorDocument 401 /snippets/errors/401.shtml
+ErrorDocument 403 /snippets/errors/403.shtml
+ErrorDocument 404 /snippets/errors/404.shtml
+ErrorDocument 500 /snippets/errors/500.shtml
+
+
+
+
+
+
+
+RewriteRule ^$ /about/ [L,R=301]
+
+
+# for art archive
+RewriteRule ^art/archive/?$ /art-archive.php [NC,L]
+
+
+## for the slider and homepage
+RewriteRule ^(art)/?$ index.php [NC]
+RewriteRule ^art/(.+)/?$ art-store.php?q=$1 [NC,L]
+
+
+
+## for artist pages
+RewriteRule ^artist/(.*)$ /talent/$1 [R=301,NC,L]
+RewriteRule ^(talent)/?$ /people/index.php [NC]
+RewriteRule ^talent/(.+)/?$ /people/person.php?u=$1 [NC,L]
+
+Redirect 301 /talent/dmitri-tcherbadji /talent/dmitrizzle
+
+
+
+
+
+
+
+# for elsewhere feature:
+RewriteRule ^(elsewhere)/?$ elsewhere-embed.php [NC]
+RewriteRule ^elsewhere/(.+)/?$ elsewhere-embed.php?q=$1 [NC,L]
+
+
+
+# redirect old url to new structure
+RewriteRule ^art-and-photography/(.*)$ /art/$1 [R=301,NC,L]
+RewriteRule ^blog/(.*)$ /mag/$1 [R=301,NC,L]
+RewriteRule ^digital-photography(.*)$ /art/archive/ [R=301,NC,L]
+RewriteRule ^artwork-graphics(.*)$ /art/archive/ [R=301,NC,L]
+RewriteRule ^prints(.*)$ /art/archive/ [R=301,NC,L]
+
+
+
+
+# error pages
+ErrorDocument 403 /snippets/errors/403.php
+ErrorDocument 404 /snippets/errors/404.php
+ErrorDocument 500 /snippets/errors/500.php
+
+
+
+
+# deny access to log file
+<Files "downloads_log.txt">
+Order Allow,Deny
+Deny from all
+</Files>
+
+# disable gzip for downloads
+<FilesMatch "^download-printables">
+RewriteRule . - [E=no-gzip:1]
+</FilesMatch>

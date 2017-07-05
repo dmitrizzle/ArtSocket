@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /order/
+Disallow: /order
+Disallow: /order.php
+Disallow: /print-db/?*
+Disallow: /print-db?*
+Disallow: /print-db.php?*
+
+Disallow: /home
+Disallow: /home/
+Disallow: /home.php

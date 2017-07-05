@@ -3,6 +3,8 @@ This is a static render of ArtSocket website downloaded with `wget` from the ori
 
 If you'd like to learn how the website core was built and functions please check out `master` branch.
 
+#### This branch is based on static files generated from PHP/`main` on July 5, 2017.
+
 ## Purpose
 This branch is the actively maintained version of ArtSocket. It's much simpler/lighter (no Stripe, MailChimp or any kinds of forms) version, designed for cheap hosting and simple maintenance.
 

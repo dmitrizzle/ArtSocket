@@ -1,6 +1,7 @@
-# ArtSocket
-A PHP/MooTools-based website that hosts images and articles with Stripe e-commerce plugin & MailChimp integration.
+# ArtSocket STATIC
+This is a static render of ArtSocket website downloaded with `wget` from the original PHP servers that rendered the content of `master` branch here.
 
-Most of the things should work out of the box. This project can be hosted on a simple Apache PHP server. I have removed some personal information (i.e. my email address and API keys for Stripe & MailChimp) so please watch for error messages (should be very easy to fix).
+If you'd like to learn how the website core was built and functions please check out `master` branch.
 
-There are some sample images and blog entries.
+## Purpose
+This branch is actively maintained version of ArtSocket. It's much simpler/lighter (no Stripe, MailChimp or any kinds of forms) version, designed for cheap hosting and simple maintenance.

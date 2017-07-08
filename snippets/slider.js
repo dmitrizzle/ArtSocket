@@ -216,7 +216,7 @@ if($('imageSlider')){
 				//thumbnail preview before the image loads:
 				/*
 				imageAligner[currentSlide].setStyles({
-					'background-image': 'url(/images/thumbnails/?i='+imageDir+smallImageP+sliderImage[currentSlide].get('data-image')+'&m=L_square)' //,
+					'background-image': 'url('+imageDir+smallImageP+sliderImage[currentSlide].get('data-image')+'&m=L_square)' //,
 					//'opacity': .65
 				});
 				*/
@@ -609,7 +609,7 @@ if($('imageSlider')){
 
 
 				//thumbnail preview before the image loads:
-				//el.setStyle('background-image', 'url(/images/thumbnails/?i='+imageDir+smallImageP+sliderImage[i].get('data-image')+'&m=embed&xoffset=0)');
+				//el.setStyle('background-image', 'url('+imageDir+smallImageP+sliderImage[i].get('data-image')+'&m=embed&xoffset=0)');
 
 
 

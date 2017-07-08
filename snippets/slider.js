@@ -349,22 +349,22 @@ if($('imageSlider')){
 			//if($$('section.storyContent')[currentSlide].hasClass('loadingContainer') || firstSlideEnhance == 0){
 				nametag = $$('#imageSlider > div > article')[currentSlide].get('data-slide-url').replace('/art/','').replace('/','');
 
-				new Request.JSON({
-					url: '/print-db.php?nametag='+nametag,
-					onComplete: function(d){
-
-						//show story and author title
-						$$('section.storyContent')[currentSlide].set('html', d.story).removeClass('loadingContainer');
-						$$('h3.author')[currentSlide].set('html','By '+d['author-block']);
-
-						//HISTORY API push
-						// document.title = '"' + sliderTitles[currentSlide] + '" by ' + d.author;
-
-
-						$$('.productDetails')[currentSlide].setStyle('opacity',1);
-						firstSlideEnhance++;
-					}
-				}).send();
+				// new Request.JSON({
+				// 	url: '/print-db.php?nametag='+nametag,
+				// 	onComplete: function(d){
+				//
+				// 		//show story and author title
+				// 		$$('section.storyContent')[currentSlide].set('html', d.story).removeClass('loadingContainer');
+				// 		$$('h3.author')[currentSlide].set('html','By '+d['author-block']);
+				//
+				// 		//HISTORY API push
+				// 		// document.title = '"' + sliderTitles[currentSlide] + '" by ' + d.author;
+				//
+				//
+				// 		$$('.productDetails')[currentSlide].setStyle('opacity',1);
+				// 		firstSlideEnhance++;
+				// 	}
+				// }).send();
 			//}
 
 		}

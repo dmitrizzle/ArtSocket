@@ -1,0 +1,20 @@
+{
+  "name": "artsocket",
+  "version": "1.0.0",
+  "description": "This is a static render of ArtSocket website downloaded with `wget` from the original PHP servers that rendered the content of `raw` branch here.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmitrizzle/ArtSocket.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dmitrizzle/ArtSocket/issues"
+  },
+  "homepage": "https://github.com/dmitrizzle/ArtSocket#readme",
+  "dependencies": {}
+}

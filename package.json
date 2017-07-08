@@ -16,7 +16,5 @@
     "url": "https://github.com/dmitrizzle/ArtSocket/issues"
   },
   "homepage": "https://github.com/dmitrizzle/ArtSocket#readme",
-  "dependencies": {
-    "http-server": "^0.10.0"
-  }
+  "dependencies": {}
 }

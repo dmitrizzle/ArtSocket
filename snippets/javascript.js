@@ -1299,7 +1299,7 @@ exploreListCare = function(){ console.log(0)
 									backgroundImageUrl[i] =  el.get('data-background-image');
 								}
 							}
-              console.log(url(' + backgroundImageUrl[i] + '));
+              console.log('url(' + backgroundImageUrl[i] + ')');
 							Asset.image(backgroundImageUrl[i], {
 								onLoad: function(){
 

@@ -1026,7 +1026,7 @@ if($('imageSlider')){
 
 
 	// populate shipping info
-	$$('.shippingInfo').set('html','<a href="javascript:void(0);" title="Click to change your shipping country" class="changeCountry"><img src="/design/blank.gif" alt="Country flag" class="countryFlag" />Shipping <span class="userCountry loadingContainer">&nbsp;&nbsp;&nbsp;&nbsp;</span>: $<span class="shipPrice">...</span></a><br /><small class="shipInfo">From Madison, WI, USA<br />Delivered within 2 - 3 weeks<br />All prices are in <strong>US dollars</strong></small>');
+	// $$('.shippingInfo').set('html','<a href="javascript:void(0);" title="Click to change your shipping country" class="changeCountry"><img src="/design/blank.gif" alt="Country flag" class="countryFlag" />Shipping <span class="userCountry loadingContainer">&nbsp;&nbsp;&nbsp;&nbsp;</span>: $<span class="shipPrice">...</span></a><br /><small class="shipInfo">From Madison, WI, USA<br />Delivered within 2 - 3 weeks<br />All prices are in <strong>US dollars</strong></small>');
 
 
 	// ecom/product preview gallery function:
@@ -1239,66 +1239,66 @@ if($('imageSlider')){
 
 	//USER COUNTRY (US is default)
 
-	var usShipping = '5';
-	var caShipping = '10';
-	var defaultShipping = '18';
-
-	var ipCountry;
-	var ipCountryCode;
-
-	var changeCountry = $$('.changeCountry');
-	var userCountry = $$('.userCountry');
-	var countryFlag = $$('.countryFlag');
-	var shipPrice = $$('.shipPrice');
-
-
-	//--executed after first image load
-
-	function setIpShipping(ipCountryCode){
-		switch(ipCountryCode){
-			case 'US': shipPrice.set('html', usShipping).addClass('set'); break;
-			case 'CA': shipPrice.set('html', caShipping).addClass('set'); break;
-			default: shipPrice.set('html', defaultShipping).addClass('set'); break;
-		}
-	}
-
-	changeCountry.addEvent('click', function(e){
-		e.stop();
-		(function(){ changeCountry.removeClass('active'); }).delay(100);
-		var currentCountry = userCountry[0].get('html');
-
-
-		switch (currentCountry){
-			case 'to ' + ipCountry: //switch to to Canada
-				if(ipCountry != 'to Canada'){
-					userCountry.set('html','to Canada');
-					countryFlag.set('src','/design/isoFlags-32/CA.png');
-					shipPrice.set('html', caShipping);
-					break;
-				}
-			case 'to Canada': //switch to to USA
-				if(ipCountry != 'to USA'){
-					userCountry.set('html','to USA');
-					countryFlag.set('src','/design/isoFlags-32/US.png');
-					shipPrice.set('html', usShipping);
-					break;
-				}
-			case 'to USA': //switch to Other
-			case 'to Canada':
-				userCountry.set('html','Worldwide');
-				countryFlag.set('src','/design/isoFlags-32/_united-nations.png');
-				shipPrice.set('html', defaultShipping);
-				break;
-
-			case 'Worldwide': //switch to IP country
-				userCountry.set('html', 'to ' + ipCountry);
-				countryFlag.set('src','/design/isoFlags-32/'+ipCountryCode+'.png');
-				setIpShipping(ipCountryCode);
-				break;
-
-		}
-
-	});
+	// var usShipping = '5';
+	// var caShipping = '10';
+	// var defaultShipping = '18';
+	//
+	// var ipCountry;
+	// var ipCountryCode;
+	//
+	// var changeCountry = $$('.changeCountry');
+	// var userCountry = $$('.userCountry');
+	// var countryFlag = $$('.countryFlag');
+	// var shipPrice = $$('.shipPrice');
+	//
+	//
+	// //--executed after first image load
+	//
+	// function setIpShipping(ipCountryCode){
+	// 	switch(ipCountryCode){
+	// 		case 'US': shipPrice.set('html', usShipping).addClass('set'); break;
+	// 		case 'CA': shipPrice.set('html', caShipping).addClass('set'); break;
+	// 		default: shipPrice.set('html', defaultShipping).addClass('set'); break;
+	// 	}
+	// }
+	//
+	// changeCountry.addEvent('click', function(e){
+	// 	e.stop();
+	// 	(function(){ changeCountry.removeClass('active'); }).delay(100);
+	// 	var currentCountry = userCountry[0].get('html');
+	//
+	//
+	// 	switch (currentCountry){
+	// 		case 'to ' + ipCountry: //switch to to Canada
+	// 			if(ipCountry != 'to Canada'){
+	// 				userCountry.set('html','to Canada');
+	// 				countryFlag.set('src','/design/isoFlags-32/CA.png');
+	// 				shipPrice.set('html', caShipping);
+	// 				break;
+	// 			}
+	// 		case 'to Canada': //switch to to USA
+	// 			if(ipCountry != 'to USA'){
+	// 				userCountry.set('html','to USA');
+	// 				countryFlag.set('src','/design/isoFlags-32/US.png');
+	// 				shipPrice.set('html', usShipping);
+	// 				break;
+	// 			}
+	// 		case 'to USA': //switch to Other
+	// 		case 'to Canada':
+	// 			userCountry.set('html','Worldwide');
+	// 			countryFlag.set('src','/design/isoFlags-32/_united-nations.png');
+	// 			shipPrice.set('html', defaultShipping);
+	// 			break;
+	//
+	// 		case 'Worldwide': //switch to IP country
+	// 			userCountry.set('html', 'to ' + ipCountry);
+	// 			countryFlag.set('src','/design/isoFlags-32/'+ipCountryCode+'.png');
+	// 			setIpShipping(ipCountryCode);
+	// 			break;
+	//
+	// 	}
+	//
+	// });
 
 
 	window.addEvents({
@@ -1348,41 +1348,41 @@ if($('imageSlider')){
 
 
 		//which country?
-		new Request.JSONP({
-			url: 'https://freegeoip.net/json/' + visitorIP,
-			onComplete: function(d){
-
-				ipCountry = d.country_name;
-				ipCountryCode = d.country_code;
-				userCountry.set('html', 'to ' + ipCountry).addClass('set').removeClass('loadingContainer');
-				countryFlag.set('src','/design/isoFlags-32/'+ipCountryCode+'.png').addClass('set');
-
-				setIpShipping(ipCountryCode);
-			}
-		}).send();
-
-		// default country if hasn't worked for 7 seconds:
-		(function(){
-			if(ipCountry == undefined){
-				ipCountry = 'Worldwide';
-				ipCountryCode = '_united-nations';
-				userCountry.set('html',ipCountry).addClass('set').removeClass('loadingContainer');
-				countryFlag.set('src','/design/isoFlags-32/'+ipCountryCode+'.png').addClass('set');
-
-				(function(){ setIpShipping(ipCountryCode); })();
-			}
-		}).delay(7000);
+		// new Request.JSONP({
+		// 	url: 'https://freegeoip.net/json/' + visitorIP,
+		// 	onComplete: function(d){
+		//
+		// 		ipCountry = d.country_name;
+		// 		ipCountryCode = d.country_code;
+		// 		userCountry.set('html', 'to ' + ipCountry).addClass('set').removeClass('loadingContainer');
+		// 		countryFlag.set('src','/design/isoFlags-32/'+ipCountryCode+'.png').addClass('set');
+		//
+		// 		//setIpShipping(ipCountryCode);
+		// 	}
+		// }).send();
+		//
+		// // default country if hasn't worked for 7 seconds:
+		// (function(){
+		// 	if(ipCountry == undefined){
+		// 		ipCountry = 'Worldwide';
+		// 		ipCountryCode = '_united-nations';
+		// 		userCountry.set('html',ipCountry).addClass('set').removeClass('loadingContainer');
+		// 		countryFlag.set('src','/design/isoFlags-32/'+ipCountryCode+'.png').addClass('set');
+		//
+		// 		(function(){ setIpShipping(ipCountryCode); })();
+		// 	}
+		// }).delay(7000);
 
 
 
 
 		//load security and accepted cards images
-		$$('img.security').each(function(el,i){
-			el.set('src', el.get('data-image'));
-		});
-		$$('.acceptedCards').each(function(el,i){
-			el.set('src', el.get('data-image'));
-		});
+		// $$('img.security').each(function(el,i){
+		// 	el.set('src', el.get('data-image'));
+		// });
+		// $$('.acceptedCards').each(function(el,i){
+		// 	el.set('src', el.get('data-image'));
+		// });
 
 
 

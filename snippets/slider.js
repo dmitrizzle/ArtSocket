@@ -110,7 +110,7 @@ if($('imageSlider')){
 		sliderImageZoomOffsetY[i] = el.get('data-zoom-offset-y');
 		else sliderImageZoomOffsetY[i] = 0;
 
-		var sliderFigcaption = new Element('figcaption', {'class':'animateAll','html': '"<span class="title">'+sliderTitles[i]+'</span>" by <span class="authorName">...</span> <strong>$' + Math.round(parseFloat(detailsEl[i].getElements('.printPrice')[0].get('html').stripTags())) + '</strong><span class="arrow">&nbsp;</span>' });
+		var sliderFigcaption = new Element('figcaption', {'class':'animateAll','html': '"<span class="title">'+sliderTitles[i]+'</span>"<span class="arrow">&nbsp;</span>' });
 		sliderFigcaption.inject(sliderFigure[i], 'bottom');
 	});
 
